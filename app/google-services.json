@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "303244387425",
+    "firebase_url": "https://clarkap-521e1.firebaseio.com",
+    "project_id": "clarkap-521e1",
+    "storage_bucket": "clarkap-521e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:303244387425:android:b0f4d31c431b0144a07620",
+        "android_client_info": {
+          "package_name": "com.example.clarkapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "303244387425-8rremq5ltplhflenfsh2oap2mmng6r49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaj1MdzDKw37NNR0LKp8JM4j03u86sIyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "303244387425-8rremq5ltplhflenfsh2oap2mmng6r49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
