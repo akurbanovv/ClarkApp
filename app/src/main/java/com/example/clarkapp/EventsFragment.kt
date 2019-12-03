@@ -14,12 +14,12 @@ import android.webkit.WebViewClient
 import kotlinx.android.synthetic.main.fragment_events.*
 import android.widget.ProgressBar
 import android.graphics.Bitmap
+import android.view.KeyEvent
 import android.widget.TextView
 import androidx.core.view.isInvisible
-
-
-
-
+import android.view.KeyEvent.KEYCODE_BACK
+import androidx.activity.OnBackPressedCallback
+import sun.jvm.hotspot.utilities.IntArray
 
 
 
@@ -39,43 +39,49 @@ class EventsFragment : Fragment() {
     }
 
     private lateinit var webView: WebView
-    private var spinner: ProgressBar? = null
     private var loadingText: TextView? = null
+
 
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        spinner = view.findViewById(R.id.progressBar)
         loadingText = view.findViewById(R.id.loading_textView)
         webView = view.findViewById(R.id.webView)
         webView.webViewClient = object : WebViewClient() {
 
-
+            
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 view?.visibility = View.INVISIBLE
             }
 
+
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                webView.loadUrl("javascript:(function() { " +
+                        "var head = document.getElementById(‘discovery-bar’).style.display='none'; " +
+                        "})()")
+                return true
+            }
+
+
             override fun onPageFinished(view: WebView?, url: String?) {
-                // spinner?.visibility = View.GONE
                 loadingText?.visibility = View.GONE
                 view?.visibility = View.VISIBLE
+
+                webView.loadUrl("javascript:(function() { " +
+                        "var head = document.getElementById(‘discovery-bar’).style.display='none'; " +
+                        "})()")
 
                 super.onPageFinished(view, url)
             }
 
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                view?.loadUrl(url)
-                return true
-            }
+
         }
 
         webView.settings.javaScriptEnabled = true
         webView.loadUrl("https://clarku.campuslabs.com/engage/events")
-
-
     }
-
-
 }
+
+
