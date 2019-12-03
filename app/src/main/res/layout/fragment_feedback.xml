@@ -17,7 +17,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="0"
@@ -61,15 +61,28 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine" />
 
-            <Button
-                android:id="@+id/submit_button"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="0"
-                android:text="Submit" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/submit_button"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Submit" />
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    android:layout_width="185dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="Cancel" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

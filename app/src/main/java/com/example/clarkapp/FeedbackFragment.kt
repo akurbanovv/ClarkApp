@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_feedback.*
 import java.util.*
 
@@ -29,25 +31,22 @@ class FeedbackFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(FeedbackViewModel::class.java)
 
         submit_button.setOnClickListener {
-            var name = name_editText.text.toString()
-            var id = name.hashCode().toString()
-            var date = Calendar.getInstance().time.toString()
-            var email = email_editText.text.toString()
-            var feedback = feedback_editText.text.toString()
+            val name = name_editText.text.toString()
+            val id = name.hashCode().toString()
+            val date = Calendar.getInstance().time.toString()
+            val email = email_editText.text.toString()
+            val feedback = feedback_editText.text.toString()
 
-            viewModel.addFeedback(
-                FeedbackObject(
-                    id,
-                    date,
-                    name,
-                    email,
-                    feedback
-                )
-            )
+            if (name_editText.text.isEmpty() || email_editText.text.isEmpty() || feedback_editText.text.isEmpty()) {
+                Toast.makeText(getActivity(), "Please don't leave empty fields. ", Toast.LENGTH_LONG).show()
+            } else {
+                viewModel.addFeedback(FeedbackObject(id, date, name, email, feedback))
+                findNavController().navigate(R.id.action_feedbackFragment_to_menuFragment)
+            }
         }
 
-
+        cancel_button.setOnClickListener {
+            findNavController().navigate(R.id.action_feedbackFragment_to_menuFragment)
+        }
     }
-
-
 }

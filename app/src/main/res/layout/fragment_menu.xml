@@ -7,117 +7,130 @@
     android:orientation="vertical"
     tools:context=".MenuFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_weight="0"
-        android:src="@drawable/logo1" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/events_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/eventsicon"
-            android:text="Events" />
-
-        <Button
-            android:id="@+id/map_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/mapicon"
-            android:text="Map" />
-
-        <Button
-            android:id="@+id/news_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/newsicon"
-            android:text="News" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:gravity="center_horizontal">
-
-        <Button
-            android:id="@+id/res_button"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/res"
-            android:text="Resources" />
-
-        <Button
-            android:id="@+id/hours_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/timeicon"
-            android:text="Hours" />
-
-        <Button
-            android:id="@+id/courses_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/booksicon"
-            android:text="Courses" />
-    </LinearLayout>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_weight="0"
-        android:gravity="center_horizontal">
+        android:layout_weight="0">
 
-        <Button
-            android:id="@+id/library_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/recoursesicon"
-            android:text="Library" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/help_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/helpicon"
-            android:text="Help Now " />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:layout_weight="0"
+                android:src="@drawable/logo1" />
 
-        <Button
-            android:id="@+id/feedback_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00FFFFFF"
-            android:drawableTop="@drawable/feedbackicon"
-            android:text="Feedback" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:gravity="center_horizontal">
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/events_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/eventsicon"
+                    android:text="Events" />
+
+                <Button
+                    android:id="@+id/map_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/mapicon"
+                    android:text="Map" />
+
+                <Button
+                    android:id="@+id/news_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/newsicon"
+                    android:text="News" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/res_button"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/res"
+                    android:text="Resources" />
+
+                <Button
+                    android:id="@+id/hours_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/timeicon"
+                    android:text="Time Table" />
+
+                <Button
+                    android:id="@+id/courses_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/booksicon"
+                    android:text="Courses" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/library_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/recoursesicon"
+                    android:text="Library" />
+
+                <Button
+                    android:id="@+id/help_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/helpicon"
+                    android:text="Help Now " />
+
+                <Button
+                    android:id="@+id/feedback_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/feedbackicon"
+                    android:text="Feedback" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
