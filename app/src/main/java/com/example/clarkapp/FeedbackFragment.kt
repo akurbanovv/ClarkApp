@@ -16,19 +16,19 @@ import java.util.*
  * A simple [Fragment] subclass.
  */
 class FeedbackFragment : Fragment() {
-    lateinit var viewModel: FeedbackViewModel
+    lateinit var viewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        viewModel = ViewModelProviders.of(this).get(FeedbackViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ViewModel::class.java)
         return inflater.inflate(R.layout.fragment_feedback, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProviders.of(this).get(FeedbackViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ViewModel::class.java)
 
         submit_button.setOnClickListener {
             val name = name_editText.text.toString()

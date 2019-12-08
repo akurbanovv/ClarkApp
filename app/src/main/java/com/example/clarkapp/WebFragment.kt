@@ -2,8 +2,7 @@ package com.example.clarkapp
 
 
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.app.ProgressDialog
+import android.graphics.Bitmap
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,36 +10,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import kotlinx.android.synthetic.main.fragment_events.*
-import android.widget.ProgressBar
-import android.graphics.Bitmap
-import android.view.KeyEvent
 import android.widget.TextView
-import androidx.core.view.isInvisible
-import android.view.KeyEvent.KEYCODE_BACK
-import androidx.activity.OnBackPressedCallback
-
-
-
-
+import androidx.lifecycle.ViewModelProviders
 
 /**
  * A simple [Fragment] subclass.
  */
-class EventsFragment : Fragment() {
+class WebFragment : Fragment() {
+
+    lateinit var viewModel: ViewModel
+    private lateinit var webView: WebView
+    private var loadingText: TextView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_events, container, false)
+        viewModel = activity?.run {
+            ViewModelProviders.of(this).get(ViewModel::class.java)
+        } ?: throw Exception("activity invalid")
+        return inflater.inflate(R.layout.fragment_web, container, false)
     }
-
-    private lateinit var webView: WebView
-    private var loadingText: TextView? = null
-
-
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,6 +40,8 @@ class EventsFragment : Fragment() {
         loadingText = view.findViewById(R.id.loading_textView)
         webView = view.findViewById(R.id.webView)
         webView.webViewClient = object : WebViewClient() {
+
+
             override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
                 view?.visibility = View.INVISIBLE
             }
@@ -75,8 +68,8 @@ class EventsFragment : Fragment() {
         }
 
         webView.settings.javaScriptEnabled = true
-        webView.loadUrl("https://clarku.campuslabs.com/engage/events")
+        print(viewModel.currentWebPage.value.toString())
+        webView.loadUrl(viewModel.currentWebPage.value.toString())
     }
+
 }
-
-

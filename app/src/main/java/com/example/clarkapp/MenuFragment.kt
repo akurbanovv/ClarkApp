@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_menu.*
 
@@ -13,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_menu.*
  * A simple [Fragment] subclass.
  */
 class MenuFragment : Fragment() {
+    lateinit var viewModel: ViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +22,9 @@ class MenuFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+        viewModel = activity?.run{
+            ViewModelProviders.of(this).get(ViewModel::class.java)
+        }?: throw Exception("activity invalid")
         return inflater.inflate(R.layout.fragment_menu, container, false)
     }
 

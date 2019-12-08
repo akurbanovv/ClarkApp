@@ -4,20 +4,36 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 
-class FeedbackViewModel (application: Application) : AndroidViewModel(application) {
+class ViewModel (application: Application) : AndroidViewModel(application) {
 
     var database = MutableLiveData<DatabaseReference>()
+    var resourcesList = MutableLiveData<ArrayList<ResourceObject>>()
+    var currentWebPage = MutableLiveData<String>()
 
     init {
         database.value = FirebaseDatabase.getInstance().reference
+        resourcesList.value = ArrayList()
+        currentWebPage.value = ""
+
+        database.value?.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {}
+
+            override fun onDataChange(p0: DataSnapshot) {
+                resourcesList.value!!.clear()
+                p0.child("resources").child("resources").children.forEach { resource ->
+                    resource.getValue(ResourceObject::class.java)?.let {
+                        resourcesList.value?.add(it)
+                    }
+                }
+            }
+        })
     }
 
     fun addFeedback(feedback: FeedbackObject) {

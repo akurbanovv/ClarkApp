@@ -5,10 +5,34 @@
     android:layout_height="match_parent"
     tools:context=".ResourcesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="0">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_weight="0"
+                android:paddingLeft="20dp"
+                android:paddingTop="30dp"
+                android:text="Student Resources"
+                android:textSize="30sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resources_RecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0" />
+
+        </LinearLayout>
+    </ScrollView>s
 </FrameLayout>

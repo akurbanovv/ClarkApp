@@ -2,22 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lin_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        tools:srcCompat="@tools:sample/avatars" />
+    android:layout_height="50dp">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/name_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
+        android:paddingLeft="20dp"
         android:text="Name of the recource on campus"
-        android:textSize="18sp" />
+        android:textSize="25sp" />
 </LinearLayout>

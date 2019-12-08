@@ -58,7 +58,11 @@
         android:id="@+id/resourcesFragment"
         android:name="com.example.clarkapp.ResourcesFragment"
         android:label="fragment_resources"
-        tools:layout="@layout/fragment_resources" />
+        tools:layout="@layout/fragment_resources" >
+        <action
+            android:id="@+id/action_resourcesFragment_to_webFragment"
+            app:destination="@id/webFragment" />
+    </fragment>
     <fragment
         android:id="@+id/hoursFragment"
         android:name="com.example.clarkapp.HoursFragment"
@@ -88,4 +92,9 @@
             android:id="@+id/action_feedbackFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.example.clarkapp.WebFragment"
+        android:label="fragment_web"
+        tools:layout="@layout/fragment_web" />
 </navigation>
