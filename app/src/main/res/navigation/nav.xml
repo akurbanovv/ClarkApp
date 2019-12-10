@@ -20,8 +20,8 @@
             android:id="@+id/action_menuFragment_to_newsFragment"
             app:destination="@id/newsFragment" />
         <action
-            android:id="@+id/action_menuFragment_to_resourcesFragment"
-            app:destination="@id/resourcesFragment" />
+            android:id="@+id/action_menuFragment_to_recyclerFragment"
+            app:destination="@id/recyclerFragment" />
         <action
             android:id="@+id/action_menuFragment_to_hoursFragment"
             app:destination="@id/hoursFragment" />
@@ -32,11 +32,8 @@
             android:id="@+id/action_menuFragment_to_feedbackFragment"
             app:destination="@+id/feedbackFragment" />
         <action
-            android:id="@+id/action_menuFragment_to_helpFragment"
-            app:destination="@id/helpFragment" />
-        <action
-            android:id="@+id/action_menuFragment_to_libraryFragment"
-            app:destination="@id/libraryFragment" />
+            android:id="@+id/action_menuFragment_to_safetyFragment"
+            app:destination="@id/safetyFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
@@ -55,34 +52,25 @@
         android:label="fragment_news"
         tools:layout="@layout/fragment_news" />
     <fragment
-        android:id="@+id/resourcesFragment"
-        android:name="com.example.clarkapp.ResourcesFragment"
+        android:id="@+id/recyclerFragment"
+        android:name="com.example.clarkapp.RecyclerViewFragment"
         android:label="fragment_resources"
-        tools:layout="@layout/fragment_resources" >
-        <action
-            android:id="@+id/action_resourcesFragment_to_webFragment"
-            app:destination="@id/webFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_recycler" />
     <fragment
         android:id="@+id/hoursFragment"
-        android:name="com.example.clarkapp.HoursFragment"
+        android:name="com.example.clarkapp.AthleticsFragment"
         android:label="fragment_hours"
-        tools:layout="@layout/fragment_hours" />
+        tools:layout="@layout/fragment_athletics" />
     <fragment
         android:id="@+id/coursesFragment"
         android:name="com.example.clarkapp.CoursesFragment"
         android:label="fragment_courses"
         tools:layout="@layout/fragment_courses" />
     <fragment
-        android:id="@+id/libraryFragment"
-        android:name="com.example.clarkapp.LibraryFragment"
-        android:label="fragment_library"
-        tools:layout="@layout/fragment_library" />
-    <fragment
-        android:id="@+id/helpFragment"
-        android:name="com.example.clarkapp.HelpFragment"
+        android:id="@+id/safetyFragment"
+        android:name="com.example.clarkapp.SafetyFragment"
         android:label="fragment_help"
-        tools:layout="@layout/fragment_help" />
+        tools:layout="@layout/fragment_safety" />
     <fragment
         android:id="@+id/feedbackFragment"
         android:name="com.example.clarkapp.FeedbackFragment"
@@ -92,9 +80,4 @@
             android:id="@+id/action_feedbackFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/webFragment"
-        android:name="com.example.clarkapp.WebFragment"
-        android:label="fragment_web"
-        tools:layout="@layout/fragment_web" />
 </navigation>

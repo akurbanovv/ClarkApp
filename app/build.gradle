@@ -48,6 +48,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.2.0'
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'androidx.browser:browser:1.0.0'
+
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+
 }
 
 apply plugin: 'com.google.gms.google-services'

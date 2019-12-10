@@ -1,11 +1,14 @@
 package com.example.clarkapp
 
 
+import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_menu.*
@@ -35,36 +38,44 @@ class MenuFragment : Fragment() {
             findNavController().navigate(R.id.action_menuFragment_to_mapFragment)
         }
         events_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_eventsFragment)
+            loadWeb("https://clarku.campuslabs.com/engage/events")
         }
         news_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_newsFragment)
+            loadWeb("https://clarknow.clarku.edu/stories/")
         }
         feedback_button.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_feedbackFragment)
         }
         help_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_helpFragment)
+            findNavController().navigate(R.id.action_menuFragment_to_safetyFragment)
         }
-        hours_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_hoursFragment)
+        athletics_button.setOnClickListener {
+            loadWeb("https://www.clarkathletics.com/landing/index")
+            // findNavController().navigate(R.id.action_menuFragment_to_hoursFragment)
         }
         library_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_libraryFragment)
+            viewModel.currentFragment.value = "library"
+            findNavController().navigate(R.id.action_menuFragment_to_recyclerFragment)
         }
         map_button.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_mapFragment)
         }
         res_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_resourcesFragment)
+            viewModel.currentFragment.value = "resources"
+            findNavController().navigate(R.id.action_menuFragment_to_recyclerFragment)
         }
         courses_button.setOnClickListener {
-            findNavController().navigate(R.id.action_menuFragment_to_coursesFragment)
+            viewModel.currentFragment.value = "courses"
+            findNavController().navigate(R.id.action_menuFragment_to_recyclerFragment)
         }
-
-
-
     }
 
+    private fun loadWeb(url: String){
+        val builder = CustomTabsIntent.Builder()
+        builder.setToolbarColor(Color.parseColor("#BC0005"))
+        builder.enableUrlBarHiding()
+        val customTabsIntent = builder.build()
+        customTabsIntent.launchUrl(context, Uri.parse(url))
+    }
 
 }

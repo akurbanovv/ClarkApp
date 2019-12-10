@@ -37,46 +37,43 @@ class EventsFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_events, container, false)
     }
 
-    private lateinit var webView: WebView
-    private var loadingText: TextView? = null
-
-
-
-    @SuppressLint("SetJavaScriptEnabled")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        loadingText = view.findViewById(R.id.loading_textView)
-        webView = view.findViewById(R.id.webView)
-        webView.webViewClient = object : WebViewClient() {
-            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
-                view?.visibility = View.INVISIBLE
-            }
-
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                webView.loadUrl("javascript:(function() { " +
-                        "var head = document.getElementById(‘discovery-bar’).style.display='none'; " +
-                        "})()")
-                return true
-            }
-
-            override fun onPageFinished(view: WebView?, url: String?) {
-                loadingText?.visibility = View.GONE
-                view?.visibility = View.VISIBLE
-
-                webView.loadUrl("javascript:(function() { " +
-                        "var head = document.getElementById(‘discovery-bar’).style.display='none'; " +
-                        "})()")
-
-                super.onPageFinished(view, url)
-            }
-
-
-        }
-
-        webView.settings.javaScriptEnabled = true
-        webView.loadUrl("https://clarku.campuslabs.com/engage/events")
-    }
+//    private lateinit var webView: WebView
+//    private var loadingText: TextView? = null
+//    @SuppressLint("SetJavaScriptEnabled")
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        loadingText = view.findViewById(R.id.loading_textView)
+//        webView = view.findViewById(R.id.webView)
+//        webView.webViewClient = object : WebViewClient() {
+//            override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
+//                view?.visibility = View.INVISIBLE
+//            }
+//
+//            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+//                webView.loadUrl("javascript:(function() { " +
+//                        "var head = document.getElementById(‘discovery-bar’).style.display='none'; " +
+//                        "})()")
+//                return true
+//            }
+//
+//            override fun onPageFinished(view: WebView?, url: String?) {
+//                loadingText?.visibility = View.GONE
+//                view?.visibility = View.VISIBLE
+//
+//                webView.loadUrl("javascript:(function() { " +
+//                        "var head = document.getElementById(‘discovery-bar’).style.display='none'; " +
+//                        "})()")
+//
+//                super.onPageFinished(view, url)
+//            }
+//
+//
+//        }
+//
+//        webView.settings.javaScriptEnabled = true
+//        webView.loadUrl("https://clarku.campuslabs.com/engage/events")
+//    }
 }
 
 

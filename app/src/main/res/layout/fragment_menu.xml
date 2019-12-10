@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     tools:context=".MenuFragment">
 
@@ -15,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -41,15 +42,6 @@
                     android:text="Events" />
 
                 <Button
-                    android:id="@+id/map_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="#00FFFFFF"
-                    android:drawableTop="@drawable/mapicon"
-                    android:text="Map" />
-
-                <Button
                     android:id="@+id/news_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -57,33 +49,6 @@
                     android:background="#00FFFFFF"
                     android:drawableTop="@drawable/newsicon"
                     android:text="News" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_weight="0"
-                android:gravity="center_horizontal">
-
-                <Button
-                    android:id="@+id/res_button"
-                    style="@style/Widget.AppCompat.Button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="#00FFFFFF"
-                    android:drawableTop="@drawable/res"
-                    android:text="Resources" />
-
-                <Button
-                    android:id="@+id/hours_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:background="#00FFFFFF"
-                    android:drawableTop="@drawable/timeicon"
-                    android:text="Time Table" />
 
                 <Button
                     android:id="@+id/courses_button"
@@ -97,10 +62,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="0"
                 android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/athletics_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/trophy"
+                    android:text="Athletics" />
+
+                <Button
+                    android:id="@+id/res_button"
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/res"
+                    android:text="Resources" />
 
                 <Button
                     android:id="@+id/library_button"
@@ -111,14 +95,32 @@
                     android:drawableTop="@drawable/recoursesicon"
                     android:text="Library" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/map_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="#00FFFFFF"
+                    android:drawableTop="@drawable/map2"
+                    android:text="Map" />
+
                 <Button
                     android:id="@+id/help_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:background="#00FFFFFF"
-                    android:drawableTop="@drawable/helpicon"
-                    android:text="Help Now " />
+                    android:drawableTop="@drawable/alert"
+                    android:text="Safety" />
 
                 <Button
                     android:id="@+id/feedback_button"

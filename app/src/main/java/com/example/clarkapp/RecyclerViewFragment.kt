@@ -15,18 +15,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_resources.*
+import kotlinx.android.synthetic.main.fragment_recycler.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
-class ResourcesFragment : Fragment() {
-
+class RecyclerViewFragment : Fragment() {
     lateinit var viewModel: ViewModel
     lateinit var viewAdapter: RecyclerViewAdapter
     lateinit var viewManager: RecyclerView.LayoutManager
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,11 +31,10 @@ class ResourcesFragment : Fragment() {
             ViewModelProviders.of(this).get(ViewModel::class.java)
         } ?: throw Exception("activity invalid")
 
-        return inflater.inflate(R.layout.fragment_resources, container, false)
+        return inflater.inflate(R.layout.fragment_recycler, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         viewManager = LinearLayoutManager(context)
         viewAdapter = RecyclerViewAdapter(ArrayList()) {
             openUrl(it)
@@ -52,48 +45,69 @@ class ResourcesFragment : Fragment() {
             this.adapter = viewAdapter
         }
 
-        viewModel.resourcesList.observe(this, Observer {
-            viewAdapter.resourcesList = it
-            viewAdapter.notifyDataSetChanged()
-        })
+        when (viewModel.currentFragment.value) {
+            "resources" -> {
+                view.findViewById<TextView>(R.id.recycler_text).setText("On-Campus Resources")
+                viewModel.resourcesList.observe(this, Observer {
+                    viewAdapter.recyclerObjList = it
+                    viewAdapter.notifyDataSetChanged()
+                })
+            }
+
+            "library" -> {
+                view.findViewById<TextView>(R.id.recycler_text).setText("Goddard Library")
+                viewModel.libraryList.observe(this, Observer {
+                    viewAdapter.recyclerObjList = it
+                    viewAdapter.notifyDataSetChanged()
+                })
+            }
+
+            "courses" -> {
+                view.findViewById<TextView>(R.id.recycler_text).setText("Courses Information")
+                viewModel.coursesList.observe(this, Observer {
+                    viewAdapter.recyclerObjList = it
+                    viewAdapter.notifyDataSetChanged()
+                })
+            }
+        }
     }
 
-    private fun openUrl(resourceObj: ResourceObject) {
-        viewModel.currentWebPage.value = resourceObj.url
+    private fun openUrl(recyclerListObj: RecyclerListObject) {
+        viewModel.currentWebPage.value = recyclerListObj.url
 
         val builder = CustomTabsIntent.Builder()
         builder.enableUrlBarHiding()
         builder.setToolbarColor(Color.parseColor("#BC0005"))
 
         val customTabsIntent = builder.build()
-        customTabsIntent.launchUrl(context, Uri.parse(resourceObj.url))
+        customTabsIntent.launchUrl(context, Uri.parse(recyclerListObj.url))
     }
 
     class RecyclerViewAdapter(
-        var resourcesList: ArrayList<ResourceObject>,
-        val clickListener: (ResourceObject) -> Unit
+        var recyclerObjList: ArrayList<RecyclerListObject>,
+        private val clickListener: (RecyclerListObject) -> Unit
     ) :
         RecyclerView.Adapter<RecyclerViewAdapter.RecyclerViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewHolder {
             val view: View =
-                LayoutInflater.from(parent.context).inflate(R.layout.item_resource, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.item_reclist, parent, false)
             return RecyclerViewHolder(view)
         }
 
         override fun getItemCount(): Int {
-            return resourcesList.size
+            return recyclerObjList.size
         }
 
         override fun onBindViewHolder(holder: RecyclerViewHolder, position: Int) {
-            holder.bind(resourcesList[position], clickListener)
+            holder.bind(recyclerObjList[position], clickListener)
         }
 
-        class RecyclerViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-            fun bind(resourceObj: ResourceObject, clickListener: (ResourceObject) -> Unit) {
+        class RecyclerViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+            fun bind(recListObj: RecyclerListObject, clickListener: (RecyclerListObject) -> Unit) {
                 view.run {
-                    view.findViewById<TextView>(R.id.name_text).text = resourceObj.name
+                    view.findViewById<TextView>(R.id.name_text).text = recListObj.name
                     view.findViewById<LinearLayout>(R.id.lin_layout)
-                        .setOnClickListener { clickListener(resourceObj) }
+                        .setOnClickListener { clickListener(recListObj) }
                 }
             }
         }

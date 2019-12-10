@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HelpFragment" >
+    android:background="#FFFFFF"
+    tools:context=".SafetyFragment" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/title"
+                android:id="@+id/recycler_text"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_weight="0"
@@ -27,33 +28,38 @@
                 android:textSize="30sp" />
 
             <LinearLayout
+                android:id="@+id/one"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:layout_weight="0"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/up_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:paddingLeft="30dp"
-                    android:text="University Police"
+                    android:paddingLeft="20dp"
+                    android:text="EMS"
                     android:textSize="25dp" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/ems_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:autoLink="phone"
-                    android:paddingLeft="30dp"
+                    android:drawableRight="@drawable/call4"
+                    android:gravity="fill"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
                     android:text="(508) 793-7575"
                     android:textSize="20dp" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/two"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
@@ -61,23 +67,26 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/up_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:paddingLeft="30dp"
-                    android:text="Health Services"
+                    android:paddingLeft="20dp"
+                    android:text="University Police"
                     android:textSize="25dp" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/up_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_weight="0"
                     android:autoLink="phone"
-                    android:paddingLeft="30dp"
-                    android:text="(508) 793-7467"
+                    android:drawableRight="@drawable/call4"
+                    android:paddingRight="10dp"
+                    android:text="(508) 793-7575"
                     android:textSize="20dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -88,24 +97,69 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/up_textView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:paddingLeft="30dp"
+                    android:paddingLeft="20dp"
+                    android:text="Health Services"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/hs_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="0"
+                    android:autoLink="phone"
+                    android:drawableRight="@drawable/call4"
+                    android:paddingRight="10dp"
+                    android:text="(508) 793-7467"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/up_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:paddingLeft="20dp"
                     android:text="Counseling and Wellness Center"
                     android:textSize="25dp" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/cw_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:layout_weight="0"
                     android:autoLink="phone"
-                    android:paddingLeft="30dp"
+                    android:drawableRight="@drawable/call4"
+                    android:paddingRight="10dp"
                     android:text="(508) 793-7678"
                     android:textSize="20dp" />
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/emergency_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="0"
+                android:drawableRight="@drawable/arraysrightsmall1"
+                android:paddingRight="5dp"
+                android:text="Emergency Notification"
+                android:textSize="25dp" />
 
         </LinearLayout>
     </ScrollView>

@@ -14,13 +14,19 @@ import kotlinx.coroutines.withContext
 class ViewModel (application: Application) : AndroidViewModel(application) {
 
     var database = MutableLiveData<DatabaseReference>()
-    var resourcesList = MutableLiveData<ArrayList<ResourceObject>>()
+    var resourcesList = MutableLiveData<ArrayList<RecyclerListObject>>()
+    var libraryList = MutableLiveData<ArrayList<RecyclerListObject>>()
     var currentWebPage = MutableLiveData<String>()
+    var currentFragment = MutableLiveData<String>()
+    var coursesList = MutableLiveData<ArrayList<RecyclerListObject>>()
 
     init {
         database.value = FirebaseDatabase.getInstance().reference
         resourcesList.value = ArrayList()
+        libraryList.value = ArrayList()
+        coursesList.value = ArrayList()
         currentWebPage.value = ""
+        currentFragment.value = ""
 
         database.value?.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {}
@@ -28,8 +34,22 @@ class ViewModel (application: Application) : AndroidViewModel(application) {
             override fun onDataChange(p0: DataSnapshot) {
                 resourcesList.value!!.clear()
                 p0.child("resources").child("resources").children.forEach { resource ->
-                    resource.getValue(ResourceObject::class.java)?.let {
+                    resource.getValue(RecyclerListObject::class.java)?.let {
                         resourcesList.value?.add(it)
+                    }
+                }
+
+                libraryList.value!!.clear()
+                p0.child("library").child("library").children.forEach { library ->
+                    library.getValue(RecyclerListObject::class.java)?.let {
+                        libraryList.value?.add(it)
+                    }
+                }
+
+                coursesList.value!!.clear()
+                p0.child("courses").child("courses").children.forEach { library ->
+                    library.getValue(RecyclerListObject::class.java)?.let {
+                        coursesList.value?.add(it)
                     }
                 }
             }
